@@ -9,8 +9,6 @@
 <p align="center">
   <h3 align="center"><a href="https://github.com/learnwithsumit/react-quiz">React Project Tutorial - Quiz Application with Firebase</a></h3>
 
-[![View on Youtube](http://img.youtube.com/vi/W3zMJxCUJAA/0.jpg)](https://youtu.be/W3zMJxCUJAA)
-
 <!-- TABLE OF CONTENTS -->
 
 ## Table of Contents
