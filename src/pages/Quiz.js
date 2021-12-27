@@ -1,6 +1,6 @@
-import Answers from "../Answers";
-import MiniPlayer from "../MiniPlayer";
-import ProgressBar from "../ProgressBar";
+import Answers from "../components/Answers";
+import MiniPlayer from "../components/MiniPlayer";
+import ProgressBar from "../components/ProgressBar";
 
 export default function Quiz() {
   return (
