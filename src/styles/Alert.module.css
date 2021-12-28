@@ -1,0 +1,10 @@
+.alert_warning{
+    background-color: rgb(231, 67, 67);
+    color: white;
+    margin-bottom: 15px;
+}
+.alert_success{
+    background-color: rgb(59, 243, 34);
+    color: white;
+    margin-bottom: 15px;
+}

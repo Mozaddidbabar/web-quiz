@@ -15,14 +15,15 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const auth = getAuth()
-        return onAuthStateChanged(auth, (user) => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
             setCurrentUser(user);
             setLoading(false)
         })
-    }, [])
+        return unsubscribe;
+    }, [setCurrentUser])
 
     // Sign up function
-    async function SignUp(email, password, username) {
+    async function Signup(email, password, username) {
         let auth = getAuth()
         console.log(auth);
         await createUserWithEmailAndPassword(auth, email, password);
@@ -49,7 +50,7 @@ export const AuthProvider = ({ children }) => {
 
     const value = {
         currentUser,
-        SignUp,
+        Signup,
         Login,
         Logout,
         loading

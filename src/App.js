@@ -1,6 +1,6 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout";
-import { AuthProvider } from "./contexts/AuthContext";
+import { useAuth } from "./contexts/AuthContext";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Quiz from "./pages/Quiz";
@@ -9,18 +9,28 @@ import Signup from "./pages/Signup";
 import "./styles/App.css";
 
 function App() {
+  const { currentUser } = useAuth();
   return (
-    <AuthProvider>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/signin" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/quiz" element={<Quiz />} />
-          <Route path="/result" element={<Result />} />
-        </Routes>
-      </Layout>
-    </AuthProvider>
+    <Layout>
+      <Routes>
+        {currentUser ?
+          (
+            <>
+              <Route path="/" element={<Home />} />
+              <Route path="/quiz" element={<Quiz />} />
+              <Route path="/result" element={<Result />} />
+            </>
+          ) :
+          (
+            <>
+              <Route path="/" element={<Home />} />
+              <Route path="/signin" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+            </>
+          )}
+        <Route path="*" element={<Navigate replace to={currentUser ? "/" : "signin"} />} />
+      </Routes>
+    </Layout>
   );
 }
 
