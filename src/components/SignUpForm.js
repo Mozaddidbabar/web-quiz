@@ -25,7 +25,7 @@ export default function SignUpForm() {
 
     const authContext = useAuth();
 
-    const { Signup } = authContext;
+    const { Signup, loading } = authContext;
 
     async function onFormSubmit(e) {
 
@@ -63,60 +63,64 @@ export default function SignUpForm() {
     return (
         <>
 
-            <Form className={`${classes.signup}`} onSubmit={onFormSubmit}>
-                {show && <Alert alert={error} type={errorType} />}
-                <TextInput
-                    type="text"
-                    placeholder="Enter name"
-                    icon="person"
-                    value={username}
-                    required
-                    onChange={(e) => setUsername(e.target.value)}
-                />
+            {loading ? <p>Loading...</p> : (
+                <Form className={`${classes.signup}`} onSubmit={onFormSubmit}>
+                    {show && <Alert alert={error} type={errorType} />}
+                    <TextInput
+                        type="text"
+                        placeholder="Enter name"
+                        icon="person"
+                        value={username}
+                        required
+                        onChange={(e) => setUsername(e.target.value)}
+                    />
 
-                <TextInput
-                    type="text"
-                    placeholder="Enter email"
-                    icon="alternate_email"
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
+                    <TextInput
+                        type="text"
+                        placeholder="Enter email"
+                        icon="alternate_email"
+                        required
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
 
-                <TextInput
-                    type="password"
-                    placeholder="Enter password"
-                    required
-                    icon="lock"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)} />
+                    <TextInput
+                        type="password"
+                        placeholder="Enter password"
+                        required
+                        icon="lock"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)} />
 
-                <TextInput
-                    type="password"
-                    placeholder="Confirm password"
-                    required
-                    icon="lock_clock"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                />
+                    <TextInput
+                        type="password"
+                        placeholder="Confirm password"
+                        required
+                        icon="lock_clock"
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                    />
 
-                <Checkbox
-                    text="I agree to the Terms &amp; Conditions"
-                    required
-                    value={agree}
-                    onChange={(e) => setAgree(e.target.checked)}
-                />
+                    <Checkbox
+                        text="I agree to the Terms &amp; Conditions"
+                        required
+                        value={agree}
+                        onChange={(e) => setAgree(e.target.checked)}
+                    />
 
-                <Button type="submit">
-                    <span>Submit Now</span>
-                </Button>
+                    <Button type="submit">
+                        <span>Submit Now</span>
+                    </Button>
 
 
 
-                <div className="info">
-                    Already have an account? <Link to="/signin">Login</Link> instead.
-                </div>
-            </Form>
+                    <div className="info">
+                        Already have an account? <Link to="/signin">Login</Link> instead.
+                    </div>
+                </Form>
+            )
+            }
+
         </>
     )
 }

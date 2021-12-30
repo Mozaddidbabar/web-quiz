@@ -8,9 +8,7 @@ import Form from './Form'
 import TextInput from './TextInput'
 
 export default function SignInForm() {
-
     const navigates = useNavigate();
-
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [error, setError] = useState("")
@@ -30,6 +28,7 @@ export default function SignInForm() {
         try {
 
             await Login(email, password)
+
             navigates('/')
             setShow(true)
             setError("Loading");
@@ -46,34 +45,40 @@ export default function SignInForm() {
 
     }
 
+
+
     return (
         <>
-            <Form className={`${classes.login}`} onSubmit={onFormSubmit}>
-                {loading && <p>Loading ...</p>}
-                {show && <Alert alert={error} type={errorType} />}
-                <TextInput
-                    type="text"
-                    placeholder="Enter email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    icon="alternate_email"
-                />
+            {
+                loading ? <p>Loading ...</p> : (
+                    <Form className={`${classes.login}`} onSubmit={onFormSubmit}>
+                        {show && <Alert alert={error} type={errorType} />}
+                        <TextInput
+                            type="text"
+                            placeholder="Enter email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            icon="alternate_email"
+                        />
 
-                <TextInput
-                    type="password"
-                    placeholder="Enter password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    icon="lock" />
+                        <TextInput
+                            type="password"
+                            placeholder="Enter password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            icon="lock" />
 
-                <Button>
-                    <span>Submit Now</span>
-                </Button>
+                        <Button>
+                            <span>Submit Now</span>
+                        </Button>
 
-                <div className="info">
-                    Don't have an account? <Link to="/signup">Signup</Link> instead.
-                </div>
-            </Form>
+                        <div className="info">
+                            Don't have an account? <Link to="/signup">Signup</Link> instead.
+                        </div>
+                    </Form>
+                )
+            }
+
         </>
     )
 }

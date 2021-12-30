@@ -25,7 +25,7 @@ export const AuthProvider = ({ children }) => {
     // Sign up function
     async function Signup(email, password, username) {
         let auth = getAuth()
-        console.log(auth);
+        // console.log(auth);
         await createUserWithEmailAndPassword(auth, email, password);
         auth = getAuth();
         let user = auth.currentUser
@@ -35,11 +35,13 @@ export const AuthProvider = ({ children }) => {
         setCurrentUser({
             ...user,
         })
+        setLoading(false)
     }
     // login function 
     async function Login(email, password) {
         const auth = getAuth();
         await signInWithEmailAndPassword(auth, email, password)
+        setLoading(false)
     }
 
     // Logout function 
