@@ -1,9 +1,9 @@
-import { get, getDatabase, orderByKey, query, ref } from "firebase/database";
+import { get, getDatabase, limitToFirst, orderByKey, query, ref, startAt } from "firebase/database";
 import { useEffect, useState } from 'react';
 
 
 
-export default function useVideList() {
+export default function useVideList(page) {
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(true);
     const [videos, setVideos] = useState([])
@@ -18,6 +18,8 @@ export default function useVideList() {
             const dataQuery = query(
                 databaseRef,
                 orderByKey(),
+                startAt("" + page),
+                limitToFirst(8)
             )
             try {
                 setError(false)
@@ -43,7 +45,7 @@ export default function useVideList() {
         }
         VideoFetch()
 
-    }, [])
+    }, [page])
     return {
         error,
         loading,
