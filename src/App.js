@@ -17,7 +17,7 @@ function App() {
           (
             <>
               <Route path="/" element={<Home />} />
-              <Route path="/quiz" element={<Quiz />} />
+              <Route path="/quiz/:videoID" element={<Quiz />} />
               <Route path="/result" element={<Result />} />
             </>
           ) :
