@@ -13,12 +13,13 @@ function App() {
   return (
     <Layout>
       <Routes>
+        <Route path="/" element={<Home />} />
         {currentUser ?
           (
             <>
-              <Route path="/" element={<Home />} />
+
               <Route path="/quiz/:videoID" element={<Quiz />} />
-              <Route path="/result" element={<Result />} />
+              <Route path="/result/:videoID" element={<Result />} />
             </>
           ) :
           (

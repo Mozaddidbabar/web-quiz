@@ -3,7 +3,7 @@ import classes from "../styles/ProgressBar.module.css";
 import Button from "./Button";
 
 export default function ProgressBar({ nextQuestion, prevQuestion, progress, submit }) {
-  console.log(progress);
+  // console.log(progress);
   return (
     <div className={classes.progressBar}>
       <div className={classes.backButton} onClick={prevQuestion}>

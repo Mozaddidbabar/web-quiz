@@ -8,7 +8,7 @@ import Video from "./Video";
 export default function Videos() {
   const [page, setPage] = useState(0);
   const { videos, loading, error, hasMore } = useVideList(page);
-  console.log(videos);
+  // console.log(videos);
   return (
     <div className={classes.videos}>
       <InfiniteScroll dataLength={videos.length} hasMore={hasMore}
@@ -19,7 +19,7 @@ export default function Videos() {
         {loading ? <p>Loading...</p> : null}
         {error ? <p>Some error found!</p> : null}
         {
-          videos.length > 0 ? videos.map((video) => {
+          videos.length > 0 ? videos.map((video, index) => {
             // console.log(video);
             return (
 
@@ -28,7 +28,7 @@ export default function Videos() {
                   <Video title={video.title} noq={video.noq} youtubeID={video.youtubeID} />
                 </Link>) :
                 (
-                  <Video title={video.title} noq={video.noq} youtubeID={video.youtubeID} />
+                  <Video title={video.title} noq={video.noq} youtubeID={index} key={video.youtubeID} />
                 )
 
             )

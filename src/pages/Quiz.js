@@ -1,12 +1,14 @@
 import { getDatabase, ref, set } from 'firebase/database';
 import _ from 'lodash';
-import { useEffect, useReducer, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Answers from "../components/Answers";
 import MiniPlayer from "../components/MiniPlayer";
 import ProgressBar from "../components/ProgressBar";
 import { useAuth } from '../contexts/AuthContext';
 import useQuestions from "../hooks/useQuestions";
+
+// const quizContext = React.createContext()
 
 const initialState = null;
 const reducer = (state, action) => {
@@ -40,6 +42,7 @@ const reducer = (state, action) => {
 export default function Quiz() {
   const { videoID } = useParams();
   const history = useNavigate();
+  // const location = useLocation()
   const { currentUser } = useAuth();
   const { error, loading, questions } = useQuestions(videoID);
   const [newQuestions, dispatch] = useReducer(reducer, initialState);
@@ -85,7 +88,7 @@ export default function Quiz() {
 
 
   async function resultSubmit() {
-    console.log(currentUser);
+    // console.log(currentUser);
     const { uid } = currentUser;
     const db = getDatabase();
     const dbRef = ref(db, `result/${uid}`)
@@ -95,7 +98,23 @@ export default function Quiz() {
     await set(dbRef, {
       [videoID]: newQuestions
     });
-    history("/result")
+    // console.log(location);
+
+
+    // history({
+    //   pathname: `/result/${videoID}`,
+    //   state: {
+    //     newQuestions: "newQuestions",
+    //   },
+    // })
+
+    // console.log(newQuestions);
+
+    history(`/result/${videoID}`, {
+      state: {
+        question: newQuestions
+      },
+    })
 
   }
 

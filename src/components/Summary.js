@@ -1,12 +1,12 @@
 import image from "../assets/images/success.png";
 import classes from "../styles/Summary.module.css";
 
-export default function Summary() {
+export default function Summary({ score }) {
   return (
     <div className={classes.summary}>
       <div className={classes.point}>
         <p className={classes.score}>
-          Your score is <br />5 out of 10
+          Your score is <br />{score} out of 10
         </p>
       </div>
 
