@@ -138,7 +138,7 @@ export default function Quiz() {
             progress={percentang()}
             submit={resultSubmit}
           />
-          <MiniPlayer /></>
+          <MiniPlayer videoID={videoID} title={newQuestions[currentQuestion].title} /></>
       )}
 
     </>

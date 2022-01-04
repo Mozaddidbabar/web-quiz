@@ -7,7 +7,7 @@ export default function Analysis({ answers, score, noq }) {
     <div className={classes.analysis}>
       <h1>Question Analysis</h1>
       <h4>You answerd {score / 5} out of {noq} questions correctly</h4>
-      <Question answers={answers} />
+      <Question answers={answers} key={Math.random(10) * 100} />
     </div>
   );
 }

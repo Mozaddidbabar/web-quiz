@@ -8,12 +8,11 @@ export default function Question({ answers }) {
       {
         answers.map((answer, index) => (
           <div>
-            <div className={classes.qtitle} >
+            <div className={classes.qtitle} key={Math.random(80)}>
               <span className="material-icons-outlined"> help_outline </span>
-              {/* Here goes the question from Learn with Sumit? */}
               {answer.title}
             </div>
-            <Answers input={false} options={answer.options} key={index * 5} />
+            <Answers input={false} options={answer.options} key={Math.random(10)} />
           </div>
         ))
       }
