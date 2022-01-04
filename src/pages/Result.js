@@ -28,8 +28,12 @@ export default function Result(props) {
         questions.options.forEach((option, index2) => {
           // console.log(option, index2);
           // console.log(option, index2);
-          if (option.checked) checkedIndex.push(index2);
-          if (answers[index1].options[index2].correct) correctIndex.push(index2)
+          if (option.checked) {
+            checkedIndex.push(index2);
+            answers[index1].options[index2].checked = true
+          };
+          if (answers[index1].options[index2].correct) correctIndex.push(index2);
+
         })
         // console.log("checked", checkedIndex, 'correct', correctIndex);
         if (_.isEqual(correctIndex, checkedIndex)) {
@@ -43,13 +47,13 @@ export default function Result(props) {
   }
 
   const score = makeResult()
-  console.log(score);
+  // console.log(answers);
   return (
     <>
       {loading && <p>Loading...</p>}
       {error && <p>{error}</p>}
-      <Summary score={score} />
-      <Analysis />
+      <Summary score={score} noq={answers.length} />
+      <Analysis answers={answers} score={score} noq={answers.length} />
     </>
   );
 }

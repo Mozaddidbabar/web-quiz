@@ -130,6 +130,7 @@ export default function Quiz() {
           <Answers
             options={newQuestions[currentQuestion].options}
             onHandleChange={onHandleChange}
+            input={true}
           />
           <ProgressBar
             nextQuestion={nextQuestion}
