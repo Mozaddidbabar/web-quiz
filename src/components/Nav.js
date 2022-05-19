@@ -10,7 +10,7 @@ export default function Nav() {
         <li>
           <Link to="/" className={classes.brand}>
             <img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Guess_Quiz_Logo.png" alt="Learn with Sumit Logo" />
-            <h3>React Quiz App</h3>
+            <h3>Web Quiz</h3>
           </Link>
         </li>
       </ul>

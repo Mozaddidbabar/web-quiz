@@ -11,6 +11,8 @@
 
 .video:hover {
   box-shadow: 0 0 15px 0 #e5e5e5;
+  transition: all .3s ease-in-out;
+  transform: scale(1.05);
 }
 
 .video p {
@@ -24,7 +26,8 @@
 }
 
 .video img {
-  width: 100%;
+  width: 286px;
+  height: 190px;
   object-fit: cover;
 }
 

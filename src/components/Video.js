@@ -1,9 +1,12 @@
 import classes from "../styles/Video.module.css";
 
-export default function Video({ title, noq, youtubeID }) {
+export default function Video({Img, title, noq, youtubeID }) {
   return (
     <div className={classes.video}>
-      <img src={`https://img.youtube.com/vi/${youtubeID}/hqdefault.jpg`} alt={title} />
+      <img
+        src={Img}
+        alt={title}
+      />
       <p>{title}</p>
       <div className={classes.qmeta}>
         <p>{noq} Questions</p>
